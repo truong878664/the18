@@ -11,7 +11,8 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        dark: {},
+        dark: "#151515",
+        gray: "#F0F0F0",
       },
       fontFamily: {
         neue: ["var(--font-neue-machina)"],

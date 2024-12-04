@@ -1,12 +1,17 @@
-import { XIcon } from "lucide-react";
+import Image from "next/image";
+import illustration from "@/assets/cta/illustration_person.png";
+import background from "@/assets/cta/background.png";
+import EmailField from "@/app/components/shared/EmailField";
+import PayCardList from "./components/partials/PayCardList";
+import Tag from "@/app/components/shared/Tag";
+import CTA from "./components/partials/sections/CTA";
+import AboutUs from "./components/partials/sections/AboutUs";
 
 export default function Home() {
   return (
     <>
-      <div className="md:bg-blue-400 lg:bg-orange-200 xl:bg-cyan-400 bg-lime-400 text-sm font-extrabold sm:bg-red-400">
-        How it works
-      </div>
-      <div className="text-6xl"></div>
+      <CTA />
+      <AboutUs />
     </>
   );
 }

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-import Header from "@/components/partial/Header";
+import Header from "@/app/components/partials/Header";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -31,11 +31,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn(neueMachina.variable, neueMachina.className)}>
-        <div className="container">
-          <Header />
-          {children}
-        </div>
+      <body
+        className={cn(
+          neueMachina.variable,
+          neueMachina.className,
+          "text-lg text-dark"
+        )}
+      >
+        <Header />
+        <div className="container space-y-20">{children}</div>
       </body>
     </html>
   );
