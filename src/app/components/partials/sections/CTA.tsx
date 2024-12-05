@@ -4,12 +4,14 @@ import PayCardList from "../PayCardList";
 import Image from "next/image";
 import illustration from "@/assets/cta/illustration_person.png";
 import background from "@/assets/cta/background.png";
+import Illustration from "../../shared/Illustration";
+import { cn } from "@/lib/utils";
 
 interface CTAProps {}
 
 const CTA: FunctionComponent<CTAProps> = () => {
   return (
-    <section className="mt-10 md:mt-20 lg:mt-[7.5rem] lg:flex lg:items-center lg:justify-between lg:gap-6">
+    <section className="mt-10 md:mt-[7.5rem] lg:flex lg:items-center lg:justify-between lg:gap-6">
       <div className="space-y-10 self-start lg:max-w-[38.75rem] xl:max-w-[45rem]">
         <div className="space-y-5">
           <h1 className="text-[3.25rem] leading-[3.75rem] tracking-[-4px] lg:text-[4rem] lg:leading-[5rem]">
@@ -26,7 +28,7 @@ const CTA: FunctionComponent<CTAProps> = () => {
         </div>
       </div>
       <div
-        className="sr-only flex-shrink-0 lg:not-sr-only lg:relative"
+        className={cn("relative flex flex-shrink-0 items-start justify-center")}
         style={{ height: 580 }}
       >
         <div
@@ -35,8 +37,8 @@ const CTA: FunctionComponent<CTAProps> = () => {
         >
           <Image
             src={background.src}
-            className="object-contain"
-            alt="bg"
+            className="border object-contain"
+            alt={"background CTA"}
             fill
           />
         </div>
@@ -47,6 +49,18 @@ const CTA: FunctionComponent<CTAProps> = () => {
           alt="illustration"
         />
       </div>
+      {/* <Illustration
+        containerClassName="hidden lg:block"
+        bgImage={{ alt: "bg", src: background.src }}
+        height={580}
+        width={550}
+        subjectImage={{
+          src: illustration.src,
+          width: 311,
+          height: 552,
+          alt: "illustration",
+        }}
+      /> */}
     </section>
   );
 };

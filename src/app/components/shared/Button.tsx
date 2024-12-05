@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import { cva, VariantProps } from "class-variance-authority";
 import { FunctionComponent, HTMLAttributes } from "react";
+
 const button = cva("text-lg py-[0.875rem] leading-6 whitespace-nowrap", {
   variants: {
     size: {

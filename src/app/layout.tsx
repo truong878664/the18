@@ -39,7 +39,7 @@ export default function RootLayout({
         )}
       >
         <Header />
-        <div className="container space-y-20">{children}</div>
+        <main className="container space-y-20">{children}</main>
       </body>
     </html>
   );
