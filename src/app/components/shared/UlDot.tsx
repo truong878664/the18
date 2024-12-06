@@ -1,7 +1,12 @@
 import { cn } from "@/lib/utils";
 import { cva, VariantProps } from "class-variance-authority";
-import React, { FunctionComponent, PropsWithChildren } from "react";
-const ulDot = cva("flex items-start leading-7", {
+import React, {
+  FunctionComponent,
+  HTMLAttributes,
+  PropsWithChildren,
+} from "react";
+
+const ulDot = cva("flex items-start leading-7 lg:whitespace-nowrap", {
   variants: {
     size: {
       sm: "gap-3",
@@ -18,10 +23,21 @@ const ulDot = cva("flex items-start leading-7", {
   },
 });
 
-interface WrapProps extends PropsWithChildren, VariantProps<typeof ulDot> {}
-const Wrap: FunctionComponent<WrapProps> = ({ size, children }) => {
+/**
+ * WRAP UL
+ */
+interface WrapProps
+  extends PropsWithChildren,
+    VariantProps<typeof ulDot>,
+    HTMLAttributes<HTMLUListElement> {}
+const Wrap: FunctionComponent<WrapProps> = ({
+  size,
+  children,
+  className,
+  ...rest
+}) => {
   return (
-    <ul className="space-y-6">
+    <ul className={cn("space-y-6", className)} {...rest}>
       {React.Children.map(children, (child) =>
         React.isValidElement(child)
           ? React.cloneElement(child as React.ReactElement<any>, { size })
@@ -31,7 +47,12 @@ const Wrap: FunctionComponent<WrapProps> = ({ size, children }) => {
   );
 };
 
-const Item: FunctionComponent<WrapProps> = ({ children, size }) => {
+/**
+ * UL ITEM
+ */
+const Item: FunctionComponent<
+  PropsWithChildren & VariantProps<typeof ulDot>
+> = ({ children, size }) => {
   return (
     <li className={ulDot({ size })}>
       <span className="m-[9px] size-2.5 flex-shrink-0 bg-current"></span>

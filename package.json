@@ -10,6 +10,7 @@
     "format": "yarn prettier . --write"
   },
   "dependencies": {
+    "@stylexjs/stylex": "^0.9.3",
     "class-variance-authority": "^0.7.1",
     "classnames": "^2.5.1",
     "lucide-react": "^0.462.0",

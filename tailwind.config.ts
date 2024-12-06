@@ -1,5 +1,6 @@
+import { screenBreakpoints } from "./src/app/constants";
 import type { Config } from "tailwindcss";
-import screens from "tailwindcss/defaultTheme";
+
 export default {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -18,16 +19,7 @@ export default {
         neue: ["var(--font-neue-machina)"],
       },
     },
-    screens: {
-      xs: "360",
-      sm: "640px",
-      md: "768px",
-      lg: "1024px",
-      xl: "1280px",
-      "2xl": "1440px",
-      "3xl": "1512px",
-      "4xl": "1536px",
-    },
+    screens: screenBreakpoints,
     container: {
       center: true,
       padding: {
