@@ -1,43 +1,78 @@
 import { cn } from "@/lib/utils";
 import Image, { StaticImageData, ImageProps } from "next/image";
-import { FunctionComponent } from "react";
-import * as styleX from "@stylexjs/stylex";
-import { screenBreakpoints } from "@/app/constants";
+import { FunctionComponent, HTMLAttributes, ReactNode } from "react";
 
-const style = styleX.create({
-  wrap({ minWidth }: { minWidth: number }) {
-    return {
-      minWidth,
-      [`@query (min-width: ${screenBreakpoints.lg})`]: "",
-    };
-  },
-});
+import objectImage from "@/assets/aboutUs/illustration_person.png";
+import background from "@/assets/aboutUs/background.png";
 
 interface IllustrationProps {
-  bgImage: Omit<ImageProps, "width" | "height">;
-  subjectImage: ImageProps;
+  // bgImage: Omit<ImageProps, "width" | "height">;
+  // subjectImage: ImageProps;
 }
 
-const Illustration: FunctionComponent<IllustrationProps> = ({
-  bgImage,
-  subjectImage,
-}) => {
+interface WrapProps extends HTMLAttributes<HTMLDivElement> {}
+
+const Wrap: FunctionComponent<WrapProps> = ({ className, ...rest }) => {
   return (
     <div className="flex w-full justify-center">
       <div
-        className={
-          "relative flex h-80 min-w-[370px] items-end justify-center self-start p-1 lg:h-[432px] lg:w-[500px] lg:px-[1.125rem]"
-        }
-      >
-        <div className="pointer-events-none absolute inset-0 md:inset-x-4">
-          <Image src={""} className="object-contain" alt={"bg"} fill />
-        </div>
-        <div className="relative h-[249px] w-[267px] lg:h-[337px] lg:w-[360px]">
-          <Image src={""} className="object-contain" alt={"object"} fill />
-        </div>
-      </div>
+        className={cn(
+          "relative flex items-end justify-center self-start border p-1",
+          className
+        )}
+        {...rest}
+      />
     </div>
   );
 };
 
+interface BgProps extends HTMLAttributes<HTMLDivElement> {
+  imageProps: { src: string; alt: string };
+}
+
+const Bg: FunctionComponent<BgProps> = ({ className, imageProps, ...rest }) => {
+  return (
+    <div
+      className={cn(
+        "pointer-events-none absolute inset-0 md:inset-x-4",
+        className
+      )}
+      {...rest}
+    >
+      <Image
+        src={imageProps.src}
+        className="object-contain"
+        alt={imageProps.alt}
+        fill
+      />
+    </div>
+  );
+};
+
+interface SubjectProps extends HTMLAttributes<HTMLDivElement> {
+  imageProps: { src: string; alt: string };
+}
+
+const Subject: FunctionComponent<SubjectProps> = ({
+  className,
+  imageProps,
+  ...rest
+}) => {
+  return (
+    <div className={cn("relative", className)} {...rest}>
+      <Image
+        src={imageProps.src}
+        className="object-contain"
+        alt={imageProps.src}
+        fill
+      />
+    </div>
+  );
+};
+
+const Illustration = {
+  Wrap,
+  Bg,
+  Subject,
+};
 export default Illustration;

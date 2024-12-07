@@ -12,8 +12,8 @@ interface AboutUsProps {}
 const AboutUs: FunctionComponent<AboutUsProps> = () => {
   return (
     <section className="space-y-10">
-      <div className="space-y-10 lg:flex lg:flex-row-reverse lg:space-y-0">
-        <div className="space-y-10 lg:w-7/12 lg:shrink-0">
+      <div className="space-y-10 lg:flex lg:flex-row-reverse lg:gap-10 lg:space-y-0 xl:gap-[11.75rem]">
+        <div className="space-y-10 lg:w-7/12 lg:shrink-0 xl:w-6/12">
           <Tag>About us</Tag>
           <div className="space-y-5">
             <Heading>
@@ -27,33 +27,19 @@ const AboutUs: FunctionComponent<AboutUsProps> = () => {
             </p>
           </div>
         </div>
-        {/* <div className="flex w-full justify-center">
-          <div
-            className={
-              "relative flex h-80 min-w-[370px] items-end justify-center self-start p-1 lg:h-[432px] lg:w-[500px] lg:px-[1.125rem]"
-            }
-          >
-            <div className="pointer-events-none absolute inset-0 md:inset-x-4">
-              <Image
-                src={background.src}
-                className="object-contain"
-                alt={"bg"}
-                fill
-              />
-            </div>
-            <div className="relative h-[249px] w-[267px] lg:h-[337px] lg:w-[360px]">
-              <Image
-                src={objectImage.src}
-                className="object-contain"
-                alt={"object"}
-                fill
-              />
-            </div>
-          </div>
-        </div> */}
+        <Illustration.Wrap className="h-80 min-w-[370px] lg:h-[432px] lg:w-[500px] lg:px-[1.125rem] xl:h-[500px] xl:w-[580px]">
+          <Illustration.Bg
+            imageProps={{ src: background.src, alt: "Star background" }}
+            className="md:inset-x-4"
+          />
+          <Illustration.Subject
+            imageProps={{ src: objectImage.src, alt: "Person in the moon" }}
+            className="h-[249px] w-[267px] lg:h-[337px] lg:w-[360px] xl:h-[390px] xl:w-[418px]"
+          />
+        </Illustration.Wrap>
       </div>
       <div className="lg:flex lg:justify-end">
-        <UlDot.Wrap className="lg:w-7/12">
+        <UlDot.Wrap className="lg:w-7/12 xl:w-6/12">
           <UlDot.Item>
             Shared Cloud Libraries, for a single source of truth
           </UlDot.Item>

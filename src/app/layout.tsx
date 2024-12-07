@@ -4,16 +4,6 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import Header from "@/app/components/partials/Header";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
 const neueMachina = localFont({
   src: "./fonts/PPNeueMachina-InktrapRegular.woff",
   variable: "--font-neue-machina",

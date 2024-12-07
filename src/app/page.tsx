@@ -6,12 +6,14 @@ import PayCardList from "./components/partials/PayCardList";
 import Tag from "@/app/components/shared/Tag";
 import CTA from "./components/partials/sections/CTA";
 import AboutUs from "./components/partials/sections/AboutUs";
+import HowItWork from "./components/partials/sections/HowItWork";
 
 export default function Home() {
   return (
     <>
       <CTA />
       <AboutUs />
+      <HowItWork />
     </>
   );
 }

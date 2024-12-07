@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  @font-face {
+    font-family: NeueMachina;
+    src: url("./fonts/PPNeueMachina-InktrapRegular.woff") format(woff);
+    /* font-weight: normal;
+    font-style: normal; */
+  }
+}
+/* :root {
+  --font-neue-machina: NeueMachina;
+} */
+/* // const neueMachina = localFont({
+//   src: "./fonts/PPNeueMachina-InktrapRegular.woff",
+//   variable: "--font-neue-machina",
+// }); */
+
 body {
   @apply bg-gray;
 }
