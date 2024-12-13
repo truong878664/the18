@@ -27,16 +27,18 @@ const AboutUs: FunctionComponent<AboutUsProps> = () => {
             </p>
           </div>
         </div>
-        <Illustration.Wrap className="h-80 min-w-[370px] lg:h-[432px] lg:w-[500px] lg:px-[1.125rem] xl:h-[500px] xl:w-[580px]">
-          <Illustration.Bg
-            imageProps={{ src: background.src, alt: "Star background" }}
-            className="md:inset-x-4"
-          />
-          <Illustration.Subject
-            imageProps={{ src: objectImage.src, alt: "Person in the moon" }}
-            className="h-[249px] w-[267px] lg:h-[337px] lg:w-[360px] xl:h-[390px] xl:w-[418px]"
-          />
-        </Illustration.Wrap>
+        <div className="relative">
+          <Illustration.Wrap className="right-0 top-0 h-80 min-w-[370px] lg:absolute lg:h-[432px] lg:w-[500px] lg:px-[1.125rem] xl:h-[500px] xl:w-[580px]">
+            <Illustration.Bg
+              imageProps={{ src: background.src, alt: "Star background" }}
+              className="md:inset-x-4"
+            />
+            <Illustration.Subject
+              imageProps={{ src: objectImage.src, alt: "Person in the moon" }}
+              className="h-[249px] w-[267px] lg:h-[337px] lg:w-[360px] xl:h-[390px] xl:w-[418px]"
+            />
+          </Illustration.Wrap>
+        </div>
       </div>
       <div className="lg:flex lg:justify-end">
         <UlDot.Ul className="lg:w-7/12 xl:w-6/12">

@@ -2,7 +2,8 @@ import { forwardRef, FunctionComponent, HTMLAttributes } from "react";
 import Button from "./Button";
 import { cn } from "@/lib/utils";
 
-interface EmailFieldProps {
+interface EmailFieldProps
+  extends Omit<HTMLAttributes<HTMLDivElement>, "children"> {
   btnProps?: HTMLAttributes<HTMLButtonElement>;
   inputProps?: HTMLAttributes<HTMLInputElement>;
 }
@@ -12,10 +13,12 @@ const EmailField = forwardRef<HTMLInputElement, EmailFieldProps>(
     const {
       btnProps,
       inputProps: { className: inputClassName, ...inputPropsRest } = {},
+      className,
+      ...rest
     } = props;
 
     return (
-      <div className="flex">
+      <div className={cn("flex", className)} {...rest}>
         <input
           ref={ref}
           type="text"
@@ -26,7 +29,7 @@ const EmailField = forwardRef<HTMLInputElement, EmailFieldProps>(
           )}
           {...inputPropsRest}
         />
-        <Button fill={"dark"} {...btnProps} />
+        <Button theme={"dark"} {...btnProps} />
       </div>
     );
   }

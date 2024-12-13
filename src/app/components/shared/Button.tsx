@@ -2,28 +2,31 @@ import { cn } from "@/lib/utils";
 import { cva, VariantProps } from "class-variance-authority";
 import { FunctionComponent, HTMLAttributes } from "react";
 
-const button = cva("text-lg py-[0.875rem] leading-6 whitespace-nowrap", {
-  variants: {
-    size: {
-      md: "px-5",
-      lg: "px-6",
-      xl: "px-9",
+const button = cva(
+  "text-lg py-3.5 hover:underline leading-6 whitespace-nowrap",
+  {
+    variants: {
+      size: {
+        md: "px-5",
+        lg: "px-6",
+        xl: "px-9",
+      },
+      width: {
+        full: "w-full",
+        fit: "w-fit",
+      },
+      theme: {
+        light: "bg-white text-dark",
+        dark: "bg-dark text-gray",
+      },
     },
-    width: {
-      full: "w-full",
-      fit: "w-fit",
+    defaultVariants: {
+      theme: "light",
+      size: "md",
+      width: "fit",
     },
-    fill: {
-      light: "bg-white text-dark",
-      dark: "bg-dark text-gray",
-    },
-  },
-  defaultVariants: {
-    fill: "light",
-    size: "md",
-    width: "fit",
-  },
-});
+  }
+);
 
 interface ButtonProps
   extends HTMLAttributes<HTMLButtonElement>,
@@ -33,13 +36,13 @@ const Button: FunctionComponent<ButtonProps> = ({
   className,
   size,
   width,
-  fill,
+  theme,
   ...rest
 }) => {
   return (
     <button
       {...rest}
-      className={cn(button({ size, width, fill }), className)}
+      className={cn(button({ size, width, theme }), className)}
     />
   );
 };

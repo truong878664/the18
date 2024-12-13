@@ -19,7 +19,6 @@ const ulDot = cva("flex items-start leading-7 lg:whitespace-nowrap", {
   },
   defaultVariants: {
     size: "md",
-    theme: "dark",
   },
 });
 
@@ -30,7 +29,7 @@ interface WrapProps
   extends PropsWithChildren,
     VariantProps<typeof ulDot>,
     HTMLAttributes<HTMLUListElement> {}
-const Wrap: FunctionComponent<WrapProps> = ({
+const Ul: FunctionComponent<WrapProps> = ({
   size,
   children,
   className,
@@ -50,9 +49,10 @@ const Wrap: FunctionComponent<WrapProps> = ({
 /**
  * UL ITEM
  */
-const Item: FunctionComponent<
-  PropsWithChildren & VariantProps<typeof ulDot>
-> = ({ children, size }) => {
+const Li: FunctionComponent<PropsWithChildren & VariantProps<typeof ulDot>> = ({
+  children,
+  size,
+}) => {
   return (
     <li className={ulDot({ size })}>
       <span className="m-[9px] size-2.5 flex-shrink-0 bg-current"></span>
@@ -61,9 +61,6 @@ const Item: FunctionComponent<
   );
 };
 
-const UlDot = {
-  Wrap,
-  Item,
-};
+const UlDot = { Ul, Li };
 
 export default UlDot;

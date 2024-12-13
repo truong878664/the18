@@ -1,12 +1,9 @@
-import Image from "next/image";
-import illustration from "@/assets/cta/illustration_person.png";
-import background from "@/assets/cta/background.png";
-import EmailField from "@/app/components/shared/EmailField";
-import PayCardList from "./components/partials/PayCardList";
-import Tag from "@/app/components/shared/Tag";
 import CTA from "./components/partials/sections/CTA";
-import AboutUs from "./components/partials/sections/AboutUs";
+import AboutUs from "./components/partials/sections/AboutUs_";
 import HowItWork from "./components/partials/sections/HowItWork";
+import Pricing from "./components/partials/sections/Pricing";
+import FAQs from "./components/partials/sections/FAQs";
+import CardSection from "./components/shared/CardSection";
 
 export default function Home() {
   return (
@@ -14,6 +11,15 @@ export default function Home() {
       <CTA />
       <AboutUs />
       <HowItWork />
+      <Pricing />
+      <FAQs />
+      <CardSection
+        width={{
+          DEFAULT: 10,
+          md: 50,
+          lg: 200,
+        }}
+      />
     </>
   );
 }

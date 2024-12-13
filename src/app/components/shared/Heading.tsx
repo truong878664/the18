@@ -5,9 +5,9 @@ import { FunctionComponent, HTMLAttributes } from "react";
 const heading = cva([], {
   variants: {
     size: {
-      sm: "text-[2rem] leading-10 tracking-[-1px] lg:text-[3.25rem] lg:leading-[3.75rem] lg:tracking-[-4px]",
-      md: "text-[2.75rem] leading-[3.5rem] tracking-[-4px] lg:text-6xl lg:tracking-[-3px]",
       lg: "text-[3.25rem] leading-[3.75rem] tracking-[-4px] lg:text-[4rem] lg:leading-[5rem]",
+      md: "text-[2.75rem] leading-[3.5rem] tracking-[-4px] lg:text-6xl lg:tracking-[-3px]",
+      sm: "text-[2rem] leading-10 tracking-[-1px] lg:text-[3.25rem] lg:leading-[3.75rem] lg:tracking-[-4px]",
     },
     theme: {
       dark: "text-dark",
@@ -16,7 +16,6 @@ const heading = cva([], {
   },
   defaultVariants: {
     size: "md",
-    theme: "dark",
   },
 });
 

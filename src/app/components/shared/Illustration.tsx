@@ -1,15 +1,10 @@
 import { cn } from "@/lib/utils";
-import Image, { StaticImageData, ImageProps } from "next/image";
+import Image from "next/image";
 import { FunctionComponent, HTMLAttributes, ReactNode } from "react";
 
-import objectImage from "@/assets/aboutUs/illustration_person.png";
-import background from "@/assets/aboutUs/background.png";
-
-interface IllustrationProps {
-  // bgImage: Omit<ImageProps, "width" | "height">;
-  // subjectImage: ImageProps;
-}
-
+/**
+ * WRAP
+ */
 interface WrapProps extends HTMLAttributes<HTMLDivElement> {}
 
 const Wrap: FunctionComponent<WrapProps> = ({ className, ...rest }) => {
@@ -17,7 +12,7 @@ const Wrap: FunctionComponent<WrapProps> = ({ className, ...rest }) => {
     <div className="flex w-full justify-center">
       <div
         className={cn(
-          "relative flex items-end justify-center self-start border p-1",
+          "relative -z-10 flex items-end justify-center self-start p-1",
           className
         )}
         {...rest}
@@ -26,6 +21,9 @@ const Wrap: FunctionComponent<WrapProps> = ({ className, ...rest }) => {
   );
 };
 
+/**
+ * Background
+ */
 interface BgProps extends HTMLAttributes<HTMLDivElement> {
   imageProps: { src: string; alt: string };
 }
@@ -49,6 +47,9 @@ const Bg: FunctionComponent<BgProps> = ({ className, imageProps, ...rest }) => {
   );
 };
 
+/**
+ * Subject
+ */
 interface SubjectProps extends HTMLAttributes<HTMLDivElement> {
   imageProps: { src: string; alt: string };
 }
@@ -70,9 +71,5 @@ const Subject: FunctionComponent<SubjectProps> = ({
   );
 };
 
-const Illustration = {
-  Wrap,
-  Bg,
-  Subject,
-};
+const Illustration = { Wrap, Bg, Subject };
 export default Illustration;

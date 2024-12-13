@@ -6,17 +6,20 @@
   @font-face {
     font-family: NeueMachina;
     src: url("./fonts/PPNeueMachina-InktrapRegular.woff") format(woff);
-    /* font-weight: normal;
-    font-style: normal; */
   }
 }
-/* :root {
-  --font-neue-machina: NeueMachina;
-} */
-/* // const neueMachina = localFont({
-//   src: "./fonts/PPNeueMachina-InktrapRegular.woff",
-//   variable: "--font-neue-machina",
-// }); */
+
+@layer components {
+  .w-dynamic {
+    @apply w-var-default md:w-var-md lg:w-var-lg xl:w-var-xl 2xl:w-var-2xl 3xl:w-var-3xl;
+  }
+}
+
+body,
+html {
+  overflow-x: hidden;
+  font-family: NeueMachina;
+}
 
 body {
   @apply bg-gray;

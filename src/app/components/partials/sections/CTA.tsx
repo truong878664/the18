@@ -12,21 +12,21 @@ interface CTAProps {}
 
 const CTA: FunctionComponent<CTAProps> = () => {
   return (
-    <section className="mt-10 md:mt-[7.5rem] lg:flex lg:items-center lg:justify-between lg:gap-6">
+    <section
+      id="cta"
+      className="mt-10 md:mt-30 lg:flex lg:items-center lg:justify-between lg:gap-6"
+    >
       <div className="space-y-10 self-start lg:max-w-[38.75rem] xl:max-w-[45rem]">
         <div className="space-y-5">
           <Heading size={"lg"}>
             Always Track & Analyze Your Business Statistics To Succeed.
           </Heading>
-          {/* <h1 className="text-[3.25rem] leading-[3.75rem] tracking-[-4px] lg:text-[4rem] lg:leading-[5rem]">
-            Always Track & Analyze Your Business Statistics To Succeed.
-          </h1> */}
           <p className="leading-[1.625rem]">
             A better way to manage your sales, team, clients & marketing — on a
             single platform. Powerful, affordable & easy.
           </p>
         </div>
-        <div className="space-y-[3.75rem] lg:space-y-20">
+        <div className="space-y-15 lg:space-y-20">
           <EmailField btnProps={{ children: "Get started" }} />
           <PayCardList />
         </div>
@@ -55,18 +55,6 @@ const CTA: FunctionComponent<CTAProps> = () => {
           alt="illustration"
         />
       </div>
-      {/* <Illustration
-        containerClassName="hidden lg:block"
-        bgImage={{ alt: "bg", src: background.src }}
-        height={580}
-        width={550}
-        subjectImage={{
-          src: illustration.src,
-          width: 311,
-          height: 552,
-          alt: "illustration",
-        }}
-      /> */}
     </section>
   );
 };

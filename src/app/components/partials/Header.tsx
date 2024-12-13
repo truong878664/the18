@@ -9,23 +9,31 @@ const Header: FunctionComponent<HeaderProps> = () => {
   return (
     <header className="container mt-5 flex justify-between">
       <nav className="inline-flex lg:gap-5">
-        <div className="relative size-[3.25rem]">
+        <div className="size-13 relative">
           <Image fill src={logoDark.src} alt="logo" />
         </div>
         <ul className="sr-only flex lg:not-sr-only lg:gap-5">
-          <li className="px-5 py-[0.875rem]">About Us</li>
-          <li className="px-5 py-[0.875rem]">How it work</li>
-          <li className="px-5 py-[0.875rem]">Pricing</li>
-          <li className="px-5 py-[0.875rem]">FAQs</li>
+          <a href="#about-us">
+            <li className="px-5 py-3.5">About Us</li>
+          </a>
+          <a href="#how-it-work">
+            <li className="px-5 py-3.5">How it work</li>
+          </a>
+          <a href="#pricing">
+            <li className="px-5 py-3.5">Pricing</li>
+          </a>
+          <a href="#faqs">
+            <li className="px-5 py-3.5">FAQs</li>
+          </a>
         </ul>
       </nav>
       <div className="sr-only space-x-5 lg:not-sr-only">
         <Button size={"lg"}>Login</Button>
-        <Button size={"lg"} fill={"dark"}>
+        <Button size={"lg"} theme={"dark"}>
           Sign Up
         </Button>
       </div>
-      <button className="flex size-[3.25rem] flex-col items-center justify-center gap-1.5 lg:sr-only">
+      <button className="size-13 flex flex-col items-center justify-center gap-1.5 lg:sr-only">
         <div className="h-0.5 w-7 bg-dark"></div>
         <div className="h-0.5 w-7 bg-dark"></div>
       </button>
