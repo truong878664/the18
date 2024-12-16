@@ -87,7 +87,10 @@ const Content: FunctionComponent<PropsWithChildren> = ({ children }) => (
 const Head: FunctionComponent<
   PropsWithChildren & HTMLAttributes<HTMLSpanElement>
 > = ({ className, ...rest }) => (
-  <span className={cn("text-xs leading-[1.4645]", className)} {...rest} />
+  <span
+    className={cn("text-[1.75rem] leading-[1.4645]", className)}
+    {...rest}
+  />
 );
 
 export default HowItWorkList;

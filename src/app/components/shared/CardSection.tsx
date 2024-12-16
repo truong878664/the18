@@ -1,6 +1,6 @@
 import {
-  CSSProperties,
   FunctionComponent,
+  HTMLAttributes,
   PropsWithChildren,
   ReactNode,
 } from "react";
@@ -10,93 +10,108 @@ import objectImage from "@/assets/aboutUs/illustration_person.png";
 import background from "@/assets/aboutUs/background.png";
 import Illustration from "./Illustration";
 import UlDot from "./UlDot";
-import { dynamicVariableSpaces } from "@/lib/utils";
 import { DynamicSpaces } from "@/lib/type";
-import { cva } from "class-variance-authority";
+import { cva, VariantProps } from "class-variance-authority";
+import Image, { ImageLoader, ImageLoaderProps, ImageProps } from "next/image";
+import { dynamicVariableSpaces } from "@/lib/utils";
 
 /**
  *
  */
-interface WrapProps {
-  children?: ReactNode;
-}
-
-const Wrap: FunctionComponent<WrapProps> = ({ children }) => {
-  return <section className="flex flex-col gap-10">{children}</section>;
+const Wrap: FunctionComponent<HTMLAttributes<HTMLScriptElement>> = ({
+  children,
+  className,
+  ...rest
+}) => {
+  return (
+    <section className="flex flex-col gap-10 lg:gap-15" {...rest}>
+      {children}
+    </section>
+  );
 };
 
 /**
  *
  */
-const contentWrap = cva("", {
-  variants: {
-    variant: {
-      ltr: "",
-      rtl: "",
+const contentWrap = cva(
+  "flex flex-col  lg:gap-0 2xl:gap-10 3xl:gap-[11.75rem]",
+  {
+    variants: {
+      layout: {
+        contentRight: "lg:flex-row-reverse",
+        contentLeft: "lg:flex-row *:inline-block justify-between ",
+      },
+      gap: {
+        lg: "gap-15",
+        md: "gap-10",
+      },
     },
-  },
-  defaultVariants: {
-    variant: "ltr",
-  },
-});
+    defaultVariants: {
+      layout: "contentRight",
+      gap: "md",
+    },
+  }
+);
 
-interface ContentWrapProps {}
+interface ContentWrapProps extends VariantProps<typeof contentWrap> {}
 
 const ContentWrap: FunctionComponent<ContentWrapProps & PropsWithChildren> = ({
   children,
+  layout,
+}) => {
+  return <div className={contentWrap({ layout })}>{children}</div>;
+};
+
+/**
+ *
+ */
+const contentText = cva([], {
+  variants: {
+    align: {
+      end: "text-right flex flex-col gap-5 items-right",
+      start: "space-y-5",
+    },
+  },
+  defaultVariants: {
+    align: "start",
+  },
+});
+interface ContentTextProps extends VariantProps<typeof contentText> {
+  label: string;
+  children?: ReactNode;
+}
+
+const ContentText: FunctionComponent<ContentTextProps> = ({
+  label,
+  children,
+  align,
 }) => {
   return (
-    <div className="flex flex-col gap-10 lg:flex-row-reverse xl:gap-[11.75rem]">
-      {children}
-    </div>
-  );
-};
-interface ContentTextProps {}
-
-const ContentText: FunctionComponent<ContentTextProps> = () => {
-  return (
     <div className="space-y-10 lg:w-7/12 lg:shrink-0 xl:w-6/12">
-      <Tag>About us</Tag>
-      <div className="space-y-5">
-        <Heading>Faster, friendlier feedback loops make life easier.</Heading>
-        <p>
-          Add a Viewer to your team so they can see everything you share, or
-          invite people to individual documents. It’s up to you. Stakeholders
-          can check out designs in their web browser, test prototypes and leave
-          feedback for free.
-        </p>
-      </div>
+      <Tag>{label}</Tag>
+      <div className={contentText({ align })}>{children}</div>
     </div>
   );
 };
 
-interface ImageProps {}
-
-const ContentImage: FunctionComponent<ImageProps> = () => {
+/**
+ *
+ * @param param0
+ * @returns
+ */
+const ContentImage: FunctionComponent<
+  ImageProps & { aspect: string; widths: DynamicSpaces }
+> = ({ fill: _fill, aspect, widths, ...rest }) => {
   return (
     <div className="relative">
-      <div className="right-0 top-0 lg:absolute">
-        <Illustration.Wrap className="px- h-80 min-w-[370px] lg:h-[432px] lg:w-[500px] lg:px-4.5 xl:h-[500px] xl:w-[580px]">
-          <Illustration.Bg
-            imageProps={{ src: background.src, alt: "Star background" }}
-            className="md:inset-x-4"
-          />
-          <Illustration.Subject
-            imageProps={{ src: objectImage.src, alt: "Person in the moon" }}
-            className="aspect-[14/13] w-[267px] lg:w-[360px] xl:w-[418px]"
-          />
-        </Illustration.Wrap>
+      <div className="right-0 top-0 flex items-center justify-center lg:absolute">
+        <div
+          className="w-dynamic relative min-w-var-default"
+          style={{ aspectRatio: aspect, ...dynamicVariableSpaces(widths) }}
+        >
+          <Image {...rest} fill />
+        </div>
       </div>
-    </div>
-  );
-};
-
-interface ListProps extends PropsWithChildren {}
-
-const ListWrap: FunctionComponent<ListProps> = ({ children }) => {
-  return (
-    <div className="lg:flex lg:justify-end">
-      <div className="lg:w-7/12 xl:w-6/12">{children}</div>
     </div>
   );
 };
@@ -104,30 +119,36 @@ const ListWrap: FunctionComponent<ListProps> = ({ children }) => {
 /**
  *
  */
-interface CardSectionProps {
-  width: DynamicSpaces;
-}
+const listWrap = cva("lg:flex", {
+  variants: {
+    layout: {
+      contentRight: "lg:justify-end",
+      contentLeft: "lg:justify-start",
+    },
+  },
+  defaultVariants: {
+    layout: "contentRight",
+  },
+});
+interface ListProps extends PropsWithChildren, VariantProps<typeof listWrap> {}
 
-const CardSection: FunctionComponent<CardSectionProps> = ({ width }) => {
-  return (
-    <Wrap>
-      <ContentWrap>
-        <ContentText />
-        <ContentImage />
-      </ContentWrap>
-      <ListWrap>
-        <UlDot.Ul>
-          <UlDot.Li>
-            Shared Cloud Libraries, for a single source of truth
-          </UlDot.Li>
-          <UlDot.Li>Prototype previews for user testing and research</UlDot.Li>
-          <UlDot.Li>Easy organization with projects</UlDot.Li>
-          <UlDot.Li>Free developer handoff, right inside the browser</UlDot.Li>
-          <UlDot.Li>Two-factor authentication and SSO</UlDot.Li>
-        </UlDot.Ul>
-      </ListWrap>
-    </Wrap>
-  );
+const ListWrap: FunctionComponent<ListProps> = ({ children, layout }) => {
+  return <div className={listWrap({ layout })}>{children}</div>;
+};
+
+/**
+ *
+ */
+const Content = {
+  Wrap: ContentWrap,
+  Text: ContentText,
+  Image: ContentImage,
+};
+
+const CardSection = {
+  Wrap,
+  Content,
+  ListWrap,
 };
 
 export default CardSection;
