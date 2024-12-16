@@ -2,6 +2,7 @@ import Image from "next/image";
 import { FunctionComponent } from "react";
 import logoDark from "@/assets/logo_dark.png";
 import Button from "../shared/Button";
+import LinkList from "../shared/LinkList";
 
 interface HeaderProps {}
 
@@ -9,10 +10,11 @@ const Header: FunctionComponent<HeaderProps> = () => {
   return (
     <header className="container mt-5 flex justify-between">
       <nav className="inline-flex lg:gap-5">
-        <div className="size-13 relative">
+        <div className="relative size-13">
           <Image fill src={logoDark.src} alt="logo" />
         </div>
-        <ul className="sr-only flex lg:not-sr-only lg:gap-5">
+        <LinkList variant={"row"} className="sr-only lg:not-sr-only" />
+        {/* <ul className="sr-only flex lg:not-sr-only lg:gap-5">
           <a href="#about-us">
             <li className="px-5 py-3.5">About Us</li>
           </a>
@@ -25,7 +27,7 @@ const Header: FunctionComponent<HeaderProps> = () => {
           <a href="#faqs">
             <li className="px-5 py-3.5">FAQs</li>
           </a>
-        </ul>
+        </ul> */}
       </nav>
       <div className="sr-only space-x-5 lg:not-sr-only">
         <Button size={"lg"}>Login</Button>
@@ -33,7 +35,7 @@ const Header: FunctionComponent<HeaderProps> = () => {
           Sign Up
         </Button>
       </div>
-      <button className="size-13 flex flex-col items-center justify-center gap-1.5 lg:sr-only">
+      <button className="flex size-13 flex-col items-center justify-center gap-1.5 lg:sr-only">
         <div className="h-0.5 w-7 bg-dark"></div>
         <div className="h-0.5 w-7 bg-dark"></div>
       </button>

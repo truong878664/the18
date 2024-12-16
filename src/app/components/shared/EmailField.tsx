@@ -24,7 +24,7 @@ const EmailField = forwardRef<HTMLInputElement, EmailFieldProps>(
           type="text"
           placeholder="Enter your email"
           className={cn(
-            "min-w-0 px-4 text-lg placeholder:font-neue lg:w-[22.5rem]",
+            "min-w-0 rounded-none px-4 text-lg text-dark placeholder:font-neue focus:outline-none lg:w-[22.5rem]",
             inputClassName
           )}
           {...inputPropsRest}

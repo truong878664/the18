@@ -24,7 +24,10 @@ const Wrap: FunctionComponent<HTMLAttributes<HTMLScriptElement>> = ({
   ...rest
 }) => {
   return (
-    <section className="flex flex-col gap-10 lg:gap-15" {...rest}>
+    <section
+      className="lg:last:!mb-50 flex flex-col gap-10 last:!mb-20 lg:gap-15"
+      {...rest}
+    >
       {children}
     </section>
   );
@@ -34,7 +37,7 @@ const Wrap: FunctionComponent<HTMLAttributes<HTMLScriptElement>> = ({
  *
  */
 const contentWrap = cva(
-  "flex flex-col  lg:gap-0 2xl:gap-10 3xl:gap-[11.75rem]",
+  "flex flex-col lg:gap-0 2xl:gap-10 3xl:gap-[11.75rem]",
   {
     variants: {
       layout: {
@@ -65,10 +68,22 @@ const ContentWrap: FunctionComponent<ContentWrapProps & PropsWithChildren> = ({
 /**
  *
  */
+const contentTextWrap = cva("lg:w-7/12 lg:shrink-0 xl:w-6/12", {
+  variants: {
+    align: {
+      start: "space-y-10",
+      end: "space-y-10 lg:flex lg:flex-col lg:items-end",
+    },
+  },
+  defaultVariants: {
+    align: "start",
+  },
+});
+
 const contentText = cva([], {
   variants: {
     align: {
-      end: "text-right flex flex-col gap-5 items-right",
+      end: "space-y-5 lg:text-right lg:flex lg:flex-col lg:gap-5 lg:items-right",
       start: "space-y-5",
     },
   },
@@ -87,7 +102,7 @@ const ContentText: FunctionComponent<ContentTextProps> = ({
   align,
 }) => {
   return (
-    <div className="space-y-10 lg:w-7/12 lg:shrink-0 xl:w-6/12">
+    <div className={contentTextWrap({ align })}>
       <Tag>{label}</Tag>
       <div className={contentText({ align })}>{children}</div>
     </div>
@@ -99,12 +114,25 @@ const ContentText: FunctionComponent<ContentTextProps> = ({
  * @param param0
  * @returns
  */
+const contentImage = cva("flex items-center justify-center", {
+  variants: {
+    position: {
+      relative: "relative",
+      absolute: "right-0 top-0 lg:absolute",
+    },
+  },
+  defaultVariants: {
+    position: "absolute",
+  },
+});
 const ContentImage: FunctionComponent<
-  ImageProps & { aspect: string; widths: DynamicSpaces }
-> = ({ fill: _fill, aspect, widths, ...rest }) => {
+  ImageProps & { aspect: string; widths: DynamicSpaces } & VariantProps<
+      typeof contentImage
+    >
+> = ({ fill: _fill, aspect, widths, position, ...rest }) => {
   return (
     <div className="relative">
-      <div className="right-0 top-0 flex items-center justify-center lg:absolute">
+      <div className={contentImage({ position })}>
         <div
           className="w-dynamic relative min-w-var-default"
           style={{ aspectRatio: aspect, ...dynamicVariableSpaces(widths) }}
@@ -119,11 +147,12 @@ const ContentImage: FunctionComponent<
 /**
  *
  */
-const listWrap = cva("lg:flex", {
+const listWrap = cva("z-10", {
   variants: {
     layout: {
-      contentRight: "lg:justify-end",
-      contentLeft: "lg:justify-start",
+      contentRight: "lg:flex lg:justify-end",
+      contentLeft: "lg:flex lg:justify-start",
+      contentBetween: "",
     },
   },
   defaultVariants: {

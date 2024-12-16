@@ -5,40 +5,32 @@ import objectImage from "@/assets/aboutUs/illustration_person.png";
 import background from "@/assets/aboutUs/background.png";
 import UlDot from "../../shared/UlDot";
 import Heading from "../../shared/Heading";
-import Image from "next/image";
+import CardSection from "../../shared/CardSection";
+import personOnMoon from "@/assets/aboutUs/personOnMoon.png";
 
 interface AboutUsProps {}
 
 const AboutUs: FunctionComponent<AboutUsProps> = () => {
   return (
-    <section id="about-us" className="space-y-10">
-      <div className="space-y-10 lg:flex lg:flex-row-reverse lg:gap-10 lg:space-y-0 xl:gap-[11.75rem]">
-        <div className="space-y-10 lg:w-7/12 lg:shrink-0 xl:w-6/12">
-          <Tag>About us</Tag>
-          <div className="space-y-5">
-            <Heading>
-              Faster, friendlier feedback loops make life easier.
-            </Heading>
-            <p>
-              Add a Viewer to your team so they can see everything you share, or
-              invite people to individual documents. It’s up to you.
-              Stakeholders can check out designs in their web browser, test
-              prototypes and leave feedback for free.
-            </p>
-          </div>
-        </div>
-        <Illustration.Wrap className="h-80 min-w-[370px] lg:h-[432px] lg:w-[500px] lg:px-[1.125rem] xl:h-[500px] xl:w-[580px]">
-          <Illustration.Bg
-            imageProps={{ src: background.src, alt: "Star background" }}
-            className="md:inset-x-4"
-          />
-          <Illustration.Subject
-            imageProps={{ src: objectImage.src, alt: "Person in the moon" }}
-            className="h-[249px] w-[267px] lg:h-[337px] lg:w-[360px] xl:h-[390px] xl:w-[418px]"
-          />
-        </Illustration.Wrap>
-      </div>
-      <div className="lg:flex lg:justify-end">
+    <CardSection.Wrap id="about-us">
+      <CardSection.Content.Wrap>
+        <CardSection.Content.Text label="About us">
+          <Heading>Faster, friendlier feedback loops make life easier.</Heading>
+          <p>
+            Add a Viewer to your team so they can see everything you share, or
+            invite people to individual documents. It’s up to you. Stakeholders
+            can check out designs in their web browser, test prototypes and
+            leave feedback for free.
+          </p>
+        </CardSection.Content.Text>
+        <CardSection.Content.Image
+          aspect="125/108"
+          widths={{ DEFAULT: 370, lg: 500, xl: 580 }}
+          src={personOnMoon.src}
+          alt="Person on the moon"
+        />
+      </CardSection.Content.Wrap>
+      <CardSection.ListWrap>
         <UlDot.Ul className="lg:w-7/12 xl:w-6/12">
           <UlDot.Li>
             Shared Cloud Libraries, for a single source of truth
@@ -48,8 +40,8 @@ const AboutUs: FunctionComponent<AboutUsProps> = () => {
           <UlDot.Li>Free developer handoff, right inside the browser</UlDot.Li>
           <UlDot.Li>Two-factor authentication and SSO</UlDot.Li>
         </UlDot.Ul>
-      </div>
-    </section>
+      </CardSection.ListWrap>
+    </CardSection.Wrap>
   );
 };
 

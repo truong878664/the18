@@ -21,7 +21,9 @@ export default function RootLayout({
         )}
       >
         <Header />
-        <main className="container space-y-20 scroll-smooth">{children}</main>
+        <main className="lg:space-y-50 container space-y-20 scroll-smooth">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

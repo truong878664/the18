@@ -39,6 +39,7 @@ export default {
         "25": "6.25rem",
         "30": "7.5rem",
         "25.5": "6.375rem",
+        50: "12.5rem",
       },
     },
     letterSpacing: {

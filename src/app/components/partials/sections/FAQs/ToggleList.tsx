@@ -21,7 +21,7 @@ const Li: FunctionComponent<PropsWithChildren> = ({ children }) => {
   return (
     <li>
       <button
-        className="flex w-full items-start justify-between"
+        className="flex w-full items-start justify-between text-start"
         onClick={() => setShow(!isShow)}
       >
         <span className="font-bold">

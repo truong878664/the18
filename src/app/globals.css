@@ -2,6 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+body,
+html {
+  position: relative;
+  overflow-x: hidden;
+}
+
+html {
+  font-family: NeueMachina;
+}
+
+body {
+  @apply bg-gray;
+}
+
+
 @layer base {
   @font-face {
     font-family: NeueMachina;
@@ -13,14 +28,4 @@
   .w-dynamic {
     @apply w-var-default md:w-var-md lg:w-var-lg xl:w-var-xl 2xl:w-var-2xl 3xl:w-var-3xl;
   }
-}
-
-body,
-html {
-  overflow-x: hidden;
-  font-family: NeueMachina;
-}
-
-body {
-  @apply bg-gray;
 }
