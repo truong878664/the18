@@ -14,7 +14,7 @@ const CTA: FunctionComponent<CTAProps> = () => {
   return (
     <section
       id="cta"
-      className="mt-10 md:mt-30 lg:flex lg:items-center lg:justify-between lg:gap-6"
+      className="py-10 md:pb-15 md:pt-30 lg:flex lg:items-center lg:justify-between lg:gap-6 xl:pb-25"
     >
       <div className="space-y-10 self-start lg:max-w-[38.75rem] xl:max-w-[45rem]">
         <div className="space-y-5">

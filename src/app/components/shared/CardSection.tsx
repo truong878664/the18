@@ -25,7 +25,7 @@ const Wrap: FunctionComponent<HTMLAttributes<HTMLScriptElement>> = ({
 }) => {
   return (
     <section
-      className="lg:last:!mb-50 flex flex-col gap-10 last:!mb-20 lg:gap-15"
+      className="flex flex-col gap-10 py-10 last:pb-20 md:py-15 md:last:pb-40 lg:gap-15 lg:last:pb-50 xl:py-25"
       {...rest}
     >
       {children}

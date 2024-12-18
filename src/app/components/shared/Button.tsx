@@ -32,6 +32,10 @@ interface ButtonProps
   extends HTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof button> {}
 
+/**
+ *
+ * @returns
+ */
 const Button: FunctionComponent<ButtonProps> = ({
   className,
   size,

@@ -26,7 +26,7 @@ const nextConfig: NextConfig = {
 
     return config;
   },
-  transpilePackages: ["@stylexjs/open-props"],
+  output: "standalone",
 };
 
 export default nextConfig;
